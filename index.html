@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>cute findom caption generator</title>
+    <title>Findom Generator</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -23,8 +23,8 @@
     </style>
 </head>
 <body>
-    <h1>cute findom caption generator</h1>
-    <button onclick="generateCaption()">generate post caption</button>
+    <h1>Findom Generator</h1>
+    <button onclick="generateCaption()">Generate Post Caption</button>
     <div id="output"></div>
 
     <script>
@@ -62,23 +62,40 @@
                 "demands": ["send me all your love and coins!", "time to show me i’m your favorite.", "tribute me, like, right now.", "prove your loyalty, cutie!", "make my day even better!"],
                 "rewards": ["you’ll feel so proud of yourself.", "you’ll know you made your queen happy!", "i’ll think about you for a second~", "you’ll feel like a good little servant.", "you’ll totally glow with pride!"],
                 "hashtags": ["#cutiequeen", "#prettygoddess", "#queenenergy", "#worshipme", "#feelthepower"]
+            },
+            "foot_worship": {
+                "intros": ["look at my perfect feet~", "aren’t these toes adorable?", "heehee, my soles are flawless~", "guess who has the cutest feet? me!", "bow down to these pretty toes~"],
+                "descriptions": ["every toe is a masterpiece!", "you’d do anything for these soles, huh?", "my pedicure deserves your devotion~", "you live to adore my cute little feet!", "you’re obsessed, aren’t you?"],
+                "commands": ["send a tribute for every toe, okay?", "prove you’re a true foot fan!", "kiss your screen and empty your wallet~", "c’mon, show me how much you adore them!", "send now, my feet deserve it!"],
+                "rewards": ["maybe i’ll send a lil foot pic~", "you’ll feel so good about serving me~", "i might think about letting you see more!", "you’ll know you’ve made me happy!", "you’ll be my favorite lil foot servant!"],
+                "hashtags": ["#footworship", "#cutefeet", "#soleobsession", "#kneelforfeet", "#toetribute"]
+            },
+            "blackmail": {
+                "intros": ["heehee, i know all your secrets~", "guess who’s in control? me!", "don’t forget who holds all the power~", "your little secrets are so funny~", "you know i could ruin you, right?"],
+                "threats": ["but don’t worry, i won’t… if you behave.", "so you better stay on my good side!", "just keep me happy, and we’re fine~", "be a good little paypig, okay?", "don’t make me accidentally spill anything~"],
+                "commands": ["submit your tribute now, no excuses!", "c’mon, show me how loyal you are!", "don’t waste time, send it already~", "pay up if you want to stay safe!", "you know what to do, send it now~"],
+                "punishments": ["or i might have to remind you who’s boss~", "you wouldn’t want me to get upset, would you?", "don’t make me show everyone what i know!", "stay irrelevant if you dare, loser!", "trust me, you don’t want me in a bad mood~"],
+                "form_promotion": ["wanna really prove yourself? fill out my blackmail form here: https://forms.gle/rV8bYqxz1cHWaHcR6 💌", "your next step is submitting this form: https://forms.gle/rV8bYqxz1cHWaHcR6 📝", "show me you’re serious: https://forms.gle/rV8bYqxz1cHWaHcR6 💎", "ready to give up control? fill this out: https://forms.gle/rV8bYqxz1cHWaHcR6 💼", "prove your devotion and fill out my form: https://forms.gle/rV8bYqxz1cHWaHcR6 🖤"],
+                "hashtags": ["#blackmailfindom", "#obeyme", "#cutiecontrol", "#paypigsecrets", "#spoilyourqueen"]
             }
         };
+
+        const emojis = ["💖", "✨", "💕", "😜", "🥰", "💸", "💎", "👑", "😋", "🌸"];
 
         function generateCaption() {
             const genreKeys = Object.keys(genres);
             const randomGenre = genres[genreKeys[Math.floor(Math.random() * genreKeys.length)]];
 
             let captionParts = [];
-            if (randomGenre.intros) captionParts.push(randomChoice(randomGenre.intros));
-            if (randomGenre.demands) captionParts.push(randomChoice(randomGenre.demands));
-            if (randomGenre.teases) captionParts.push(randomChoice(randomGenre.teases));
-            if (randomGenre.motivations) captionParts.push(randomChoice(randomGenre.motivations));
-            if (randomGenre.statements) captionParts.push(randomChoice(randomGenre.statements));
-            if (randomGenre.commands) captionParts.push(randomChoice(randomGenre.commands));
-            if (randomGenre.insults) captionParts.push(randomChoice(randomGenre.insults));
-            if (randomGenre.punishments) captionParts.push(randomChoice(randomGenre.punishments));
-            if (randomGenre.rewards) captionParts.push(randomChoice(randomGenre.rewards));
+            if (randomGenre.intros) captionParts.push(addRandomEmoji(randomChoice(randomGenre.intros)));
+            if (randomGenre.demands) captionParts.push(addRandomEmoji(randomChoice(randomGenre.demands)));
+            if (randomGenre.teases) captionParts.push(addRandomEmoji(randomChoice(randomGenre.teases)));
+            if (randomGenre.motivations) captionParts.push(addRandomEmoji(randomChoice(randomGenre.motivations)));
+            if (randomGenre.statements) captionParts.push(addRandomEmoji(randomChoice(randomGenre.statements)));
+            if (randomGenre.commands) captionParts.push(addRandomEmoji(randomChoice(randomGenre.commands)));
+            if (randomGenre.insults) captionParts.push(addRandomEmoji(randomChoice(randomGenre.insults)));
+            if (randomGenre.punishments) captionParts.push(addRandomEmoji(randomChoice(randomGenre.punishments)));
+            if (randomGenre.rewards) captionParts.push(addRandomEmoji(randomChoice(randomGenre.rewards)));
 
             let caption = captionParts.join(" ");
             if (randomGenre.hashtags) {
@@ -91,6 +108,13 @@
 
         function randomChoice(arr) {
             return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function addRandomEmoji(text) {
+            if (Math.random() > 0.5) {
+                return text + " " + randomChoice(emojis);
+            }
+            return text;
         }
     </script>
 </body>
