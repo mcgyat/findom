@@ -23,41 +23,64 @@
     </style>
 </head>
 <body>
-    <h1>Findom Post Generator</h1>
-    <button onclick="generateCaption()">Generate Post Caption</button>
+    <h1>Caption Generator</h1>
+    <p>Click the button to generate a new caption!</p>
+    <button onclick="generateCaption()">Generate Caption</button>
     <div id="output"></div>
 
     <script>
         const genres = {
             "classic_domination": {
-                "intros": ["Kneel before me and", "Bow down to your queen and", "Obey your goddess, it’s time to"],
-                "demands": ["tribute like you were born to", "empty your wallet for me", "prove your devotion with every cent"],
-                "motivations": ["because I own you completely.", "and feel the bliss of obedience."],
-                "commands": ["Don’t delay, send now.", "Make it hurt, just the way I like it."],
-                "hashtags": ["#Findom", "#SpoilMe", "#TributeNow"]
+                "intros": ["Kneel before me and", "Bow down to your queen and", "Obey your goddess, it’s time to", "To my loyal subjects,", "Listen carefully, my servants,"],
+                "demands": ["tribute like you were born to", "empty your wallet for me", "prove your devotion with every cent", "drain your account to show loyalty", "sacrifice what you have to please me"],
+                "motivations": ["because I own you completely.", "and feel the bliss of obedience.", "to fulfill your purpose as my servant.", "to make yourself worthy of my attention.", "because it’s the only way to earn my favor."],
+                "commands": ["Don’t delay, send now.", "Make it hurt, just the way I like it.", "Show me you understand your role.", "Submit fully, no hesitation.", "Obey your queen without question."],
+                "hashtags": ["#Findom", "#SpoilMe", "#TributeNow", "#WalletDrain", "#FinancialDomination"]
             },
             "playful_teasing": {
-                "intros": ["Hey there, pay piggy!", "Oink oink, little one,"],
-                "teases": ["You love to spoil me, don’t you?", "I know you’re obsessed with me."],
-                "commands": ["Go ahead, make me smile.", "Send it now like a good boy."],
-                "rewards": ["I might even acknowledge you.", "You’ll feel incredible when you do."],
-                "hashtags": ["#TeaseAndPlease", "#GoodBoy", "#SpoilHer"]
+                "intros": ["Hey there, pay piggy!", "Oink oink, little one,", "Hello, my adorable wallet,", "Guess who’s thinking about me?", "You can’t resist me, can you?"],
+                "teases": ["You love to spoil me, don’t you?", "I know you’re obsessed with me.", "Every dollar you send makes you happier.", "You know you want to press ‘send.’", "Admit it, my happiness is your priority."],
+                "commands": ["Go ahead, make me smile.", "Send it now like a good boy.", "Don’t keep your queen waiting.", "Tribute and prove your devotion.", "Show me how much you care."],
+                "rewards": ["I might even acknowledge you.", "You’ll feel incredible when you do.", "You might earn a moment of my attention.", "I’ll let you bask in my glow.", "You’ll know you’ve done the right thing."],
+                "hashtags": ["#TeaseAndPlease", "#GoodBoy", "#SpoilHer", "#Obsessed", "#PayPig"]
             },
-            // Add other genres here
+            "luxury_lifestyle": {
+                "intros": ["Another day, another luxury,", "Living the high life,", "Every penny you send elevates me,", "My world is gold-plated,", "This is the life your tributes create for me,"],
+                "statements": ["every moment is perfection.", "it’s all about elegance and excess.", "I’m surrounded by opulence.", "I deserve the finer things in life.", "every day is a celebration of your devotion."],
+                "demands": ["Keep the flow going.", "Fund my next adventure.", "Pay for my perfection.", "Ensure my life stays this flawless.", "Make my next purchase unforgettable."],
+                "hashtags": ["#LuxuryLife", "#SpoilMe", "#RichQueen", "#GoldenLiving", "#Opulence"]
+            },
+            "humiliation": {
+                "intros": ["Pathetic worm,", "Listen up, loser,", "Hey, insignificant wallet,", "You sad little pig,", "Bow down and"],
+                "insults": ["you’re nothing without my attention.", "your only worth is your money.", "everything about you is inferior.", "you exist to serve and pay.", "your life is meaningless without me."],
+                "commands": ["Pay up now.", "Show me you understand your place.", "Empty your wallet for your queen.", "Tribute and grovel.", "Sacrifice everything to prove your loyalty."],
+                "punishments": ["Or I’ll block you forever.", "Don’t make me erase you.", "Stay irrelevant if you dare.", "You’ll regret ignoring my demands.", "You don’t want to see my bad side."],
+                "hashtags": ["#Humiliation", "#ObeyMe", "#Worthless", "#Kneel", "#Pathetic"]
+            },
+            "empowering_queen": {
+                "intros": ["I am a goddess,", "No one compares to me,", "Bow to my greatness,", "You’re in the presence of perfection,", "Witness my power,"],
+                "statements": ["I’m everything you’ve ever dreamed of.", "my worth is unmatched.", "I am the definition of power.", "I am your ultimate queen.", "there’s no one like me."],
+                "demands": ["Treat me like royalty.", "Show me unwavering respect.", "Tribute to honor my presence.", "Prove your devotion to perfection.", "Make your sacrifices in my name."],
+                "rewards": ["You’ll feel complete.", "You’ll know you’ve done the right thing.", "You’ll be closer to greatness.", "I’ll let you bask in my glow.", "You’ll find purpose in serving me."],
+                "hashtags": ["#Empowered", "#Divine", "#QueenEnergy", "#WorshipMe", "#RuleTheWorld"]
+            }
         };
 
         function generateCaption() {
             const genreKeys = Object.keys(genres);
             const randomGenre = genres[genreKeys[Math.floor(Math.random() * genreKeys.length)]];
-            
+
             let captionParts = [];
             if (randomGenre.intros) captionParts.push(randomChoice(randomGenre.intros));
             if (randomGenre.demands) captionParts.push(randomChoice(randomGenre.demands));
             if (randomGenre.teases) captionParts.push(randomChoice(randomGenre.teases));
             if (randomGenre.motivations) captionParts.push(randomChoice(randomGenre.motivations));
+            if (randomGenre.statements) captionParts.push(randomChoice(randomGenre.statements));
             if (randomGenre.commands) captionParts.push(randomChoice(randomGenre.commands));
+            if (randomGenre.insults) captionParts.push(randomChoice(randomGenre.insults));
+            if (randomGenre.punishments) captionParts.push(randomChoice(randomGenre.punishments));
             if (randomGenre.rewards) captionParts.push(randomChoice(randomGenre.rewards));
-            
+
             let caption = captionParts.join(" ");
             if (randomGenre.hashtags) {
                 const hashtags = randomGenre.hashtags.sort(() => 0.5 - Math.random()).slice(0, 3).join(" ");
