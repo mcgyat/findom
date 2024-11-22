@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Caption Generator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 1.2em;
+            color: #333;
+        }
+        button {
+            padding: 10px 20px;
+            font-size: 1em;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>Findom Post Generator</h1>
+    <button onclick="generateCaption()">Generate Post Caption</button>
+    <div id="output"></div>
+
+    <script>
+        const genres = {
+            "classic_domination": {
+                "intros": ["Kneel before me and", "Bow down to your queen and", "Obey your goddess, it’s time to"],
+                "demands": ["tribute like you were born to", "empty your wallet for me", "prove your devotion with every cent"],
+                "motivations": ["because I own you completely.", "and feel the bliss of obedience."],
+                "commands": ["Don’t delay, send now.", "Make it hurt, just the way I like it."],
+                "hashtags": ["#Findom", "#SpoilMe", "#TributeNow"]
+            },
+            "playful_teasing": {
+                "intros": ["Hey there, pay piggy!", "Oink oink, little one,"],
+                "teases": ["You love to spoil me, don’t you?", "I know you’re obsessed with me."],
+                "commands": ["Go ahead, make me smile.", "Send it now like a good boy."],
+                "rewards": ["I might even acknowledge you.", "You’ll feel incredible when you do."],
+                "hashtags": ["#TeaseAndPlease", "#GoodBoy", "#SpoilHer"]
+            },
+            // Add other genres here
+        };
+
+        function generateCaption() {
+            const genreKeys = Object.keys(genres);
+            const randomGenre = genres[genreKeys[Math.floor(Math.random() * genreKeys.length)]];
+            
+            let captionParts = [];
+            if (randomGenre.intros) captionParts.push(randomChoice(randomGenre.intros));
+            if (randomGenre.demands) captionParts.push(randomChoice(randomGenre.demands));
+            if (randomGenre.teases) captionParts.push(randomChoice(randomGenre.teases));
+            if (randomGenre.motivations) captionParts.push(randomChoice(randomGenre.motivations));
+            if (randomGenre.commands) captionParts.push(randomChoice(randomGenre.commands));
+            if (randomGenre.rewards) captionParts.push(randomChoice(randomGenre.rewards));
+            
+            let caption = captionParts.join(" ");
+            if (randomGenre.hashtags) {
+                const hashtags = randomGenre.hashtags.sort(() => 0.5 - Math.random()).slice(0, 3).join(" ");
+                caption += ` ${hashtags}`;
+            }
+
+            document.getElementById("output").innerText = caption;
+        }
+
+        function randomChoice(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+    </script>
+</body>
+</html>
